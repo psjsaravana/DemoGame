@@ -5,25 +5,20 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.utils.TimeUtils;
 
 /**
  * Created by subramas on 9/29/16.
  */
-public class SplashScreen implements Screen {
-
-    private final MyGdxGame myGame;
-    private long startTime;
-    private SpriteBatch batch;
+public class MainScreen implements Screen {
+    SpriteBatch batch;
     Texture img;
+    MyGdxGame myGame;
 
-    public SplashScreen(MyGdxGame myGdxGame) {
+    MainScreen(MyGdxGame myGdxGame) {
         myGame = myGdxGame;
-        startTime = TimeUtils.millis();
         batch = new SpriteBatch();
-        img = new Texture("splash.jpg");
+        img = new Texture("badlogic.jpg");
     }
-
     @Override
     public void show() {
 
@@ -33,13 +28,9 @@ public class SplashScreen implements Screen {
     public void render(float delta) {
         Gdx.gl.glClearColor(1, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-        if(TimeUtils.millis() - startTime <= 3000) {
-            batch.begin();
-            batch.draw(img, 0, 0);
-            batch.end();
-        } else {
-            myGame.setScreen(new MainScreen(myGame));
-        }
+        batch.begin();
+        batch.draw(img, 0, 0);
+        batch.end();
     }
 
     @Override
