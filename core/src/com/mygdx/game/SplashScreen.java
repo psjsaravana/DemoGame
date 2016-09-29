@@ -22,6 +22,7 @@ public class SplashScreen implements Screen {
         startTime = TimeUtils.millis();
         batch = new SpriteBatch();
         img = new Texture("splash.jpg");
+
     }
 
     @Override
@@ -35,7 +36,7 @@ public class SplashScreen implements Screen {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         if(TimeUtils.millis() - startTime <= 3000) {
             batch.begin();
-            batch.draw(img, 0, 0);
+            batch.draw(img, 0, 0,Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
             batch.end();
         } else {
             myGame.setScreen(new MainScreen(myGame));
